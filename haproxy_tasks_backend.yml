@@ -1,0 +1,11 @@
+---
+- name: Working with haproxy backend 
+  become: true
+  hosts: all
+  tasks:
+  - name: Haproxy backend tasks
+    haproxy:
+      state: "{{ haproxy_backend_status }}" #drain, enable, disable
+      host: "{{ haproxy_backend_host }}" #jws-app-01
+      backend: "{{ haproxy_backend_name }}" #webservers
+      drain: "{{ haproxy_backend_drain }}"
