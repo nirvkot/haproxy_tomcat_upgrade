@@ -1,0 +1,12 @@
+---
+- name: Updating tomcat hello workld page
+  become: true
+  hosts: all
+  tasks:
+  - name: Generating template for tomcat
+    template:
+      src: hello_world_msg.j2
+      dest: /usr/local/tomcat10/webapps/sample/index.html
+      mode: u=rwx,g=r,o=r
+      group: tomcat
+      owner: tomcat
